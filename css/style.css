@@ -1,1 +1,147 @@
-body
+html {
+    height: 100%;
+    width: 100%;
+}
+
+
+body {
+    max-width: 1920px;
+    padding: 0;
+    margin: 0 auto;
+    font-size: 16px;
+    font-family: 'Roboto',Arial, Helvetica, sans-serif;
+    box-sizing: border-box;
+}
+
+button {
+    display: inline-block;
+    border: none;
+    outline: none;
+    vertical-align: middle;
+}
+
+*,
+*::before,
+*::after {
+    box-sizing: border-box;
+  }
+
+h1 {
+    text-transform: uppercase;
+}
+
+h3,
+p {
+    text-align: center;
+}
+
+.container {
+    padding: 5% 10%;
+}
+
+.head {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 0 3rem;
+    margin-bottom: 2rem;
+    box-shadow: 0 1px 5px 0 rgba(0, 0, 0, 0.2), 0 1px 5px 0 rgba(0, 0, 0, 0.19)
+}
+
+.user {
+    background-color: orangered;
+    border-radius: 50%;
+    text-align: center;
+    padding: 1rem;
+    margin: .5rem;
+    display: inline;
+}
+
+.logout {
+    display: inline;
+}
+
+.main {
+    padding: 5% 10%;
+    box-shadow: 0 1px 5px 0 rgba(0, 0, 0, 0.2), 0 1px 5px 0 rgba(0, 0, 0, 0.19)
+}
+
+.main div {
+    margin: 5px 0;
+}
+
+.input__container {
+    display: flex;
+    justify-content: center;
+
+}
+
+.input__container div {
+    margin: 5px;
+    height: 2rem;
+}
+
+input,
+select,
+button {
+    height: 100%;
+    font-family: inherit;
+    padding-left: 5px;
+}
+
+#type {
+    height: 2rem;
+}
+
+#add {
+    height: 2rem;
+    background-color: grey;
+    padding: 0 10px;
+}
+
+#add:hover {
+    background-color: darkgrey;
+}
+
+#add:active {
+    background-color: grey;
+}
+
+.display__container {
+    display: flex;
+    justify-content: space-between;
+}
+
+.income {
+    margin-right: 1rem;
+    width: 48%;
+}
+
+.expense {
+    margin-left: 1rem;
+    width: 48%;
+}
+
+.income,
+.expense,
+.result__container {
+    box-shadow: 0 1px 5px 0 rgba(0, 0, 0, 0.2), 0 1px 5px 0 rgba(0, 0, 0, 0.19);    
+    padding: 5px 20px;
+}
+
+.title {
+    position: relative;
+}
+
+.title::after {
+    content: "";
+    position: absolute;
+    top: 100%;
+    width: 90%;
+    height: 1px;
+    background-color: lightgrey;
+    margin: 0 5%;
+}
+
+.result__container {
+}
