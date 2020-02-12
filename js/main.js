@@ -1,11 +1,9 @@
 window.addEventListener('load', () => {
 
-    let inputAmount = document.getElementById('amount');
-    let inputDetail = document.getElementById('detail');
-    let inputType = document.getElementById('type');
-    let addBtn = document.getElementById('add');
-
-   
+    let inputAmount = document.querySelector('#amount');
+    let inputDetail = document.querySelector('#detail');
+    let inputType = document.querySelector('#type');
+    let addBtn = document.querySelector('#add');
     
     const userAccount = {
         firstName: 'Helmi',
@@ -35,21 +33,25 @@ window.addEventListener('load', () => {
     }
     
     console.log(userAccount)
+    console.log(inputType.value)
+
     addBtn.addEventListener('click', calculate);
 
     function calculate() {
-
+        
         checkSubmit ();
-        getTime()
-        getInput();
-        displayInput();
-        getBalance();
+
+        if (inputDetail.value === "" || inputAmount.value === "" || inputType.value === '0') {
+
+        } else {
+            getTime();
+            getInput();
+            displayInput();
+            getBalance();
+        }
 
     }
 
-    let time = getTime();
-    let detail = inputDetail.value;
-    let amount = +inputAmount.value;
     let incomeArr = [];
     let expenseArr = [];
 
@@ -70,6 +72,11 @@ window.addEventListener('load', () => {
     }
 
     function getInput() {
+
+        let detail = inputDetail.value;
+        let amount = +inputAmount.value;
+        let time = getTime();
+
         if (inputType.value === 'income') {
             userAccount.income.push({detail, amount, time});
         } else if (inputType.value === 'expense') {
