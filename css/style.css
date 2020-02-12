@@ -177,3 +177,175 @@ button {
 #result {
     font-weight: bold;
 }
+
+/* 
+  ##Device = Desktops
+  ##Screen = 1281px to higher resolution desktops
+*/
+
+@media (min-width: 1281px) {
+    
+  }
+  
+  /* 
+    ##Device = Laptops, Desktops
+    ##Screen = B/w 1025px to 1280px
+  */
+  
+  @media (min-width: 1025px) and (max-width: 1280px) {
+    .container {
+        padding: 3% 6%;
+    }
+    
+  }
+  
+  /* 
+    ##Device = Tablets, Ipads (portrait)
+    ##Screen = B/w 768px to 1024px
+  */
+  
+  @media (min-width: 768px) and (max-width: 1024px) {
+
+    body {
+        font-size: 14px;
+    }
+
+    .container {
+        padding: 0;
+    }
+
+    .head {
+        margin-bottom: 8px;
+    }
+    
+    .main {
+        padding: 2% 1%;
+    }
+  }
+  
+  /* 
+    ##Device = Tablets, Ipads (landscape)
+    ##Screen = B/w 768px to 1024px
+  */
+  
+  @media (min-width: 768px) and (max-width: 1024px) and (orientation: landscape) {
+    
+    
+  }
+  
+  /* 
+    ##Device = Low Resolution Tablets, Mobiles (Landscape)
+    ##Screen = B/w 481px to 767px
+  */
+  
+  @media (min-width: 481px) and (max-width: 767px) {
+
+    body {
+        font-size: 14px;
+    }
+
+    .container {
+        padding: 0;
+    }
+
+    .head {
+        margin-bottom: 8px;
+    }
+    
+    .main {
+        padding: 2% 1%;
+        margin: 0 1%;
+    }
+
+    .input__container {
+        display: flex;
+        justify-content: center;
+        flex-wrap: wrap;
+    }
+
+    .input__container div {
+        width: 35%;
+    }
+
+    .display__container {
+        display: flex;
+        justify-content: center;
+        flex-direction: column;
+    }
+
+    .income,
+    .expense {
+        width: 100%;
+    }
+  
+  }
+  
+  /* 
+    ##Device = Most of the Smartphones Mobiles (Portrait)
+    ##Screen = B/w 320px to 479px
+  */
+  
+  @media (min-width: 320px) and (max-width: 480px) {
+    
+    body {
+        font-size: 12px;
+    }
+
+    h1 {
+        font-size: 20px;
+    }
+
+    .container {
+        padding: 0;
+    }
+
+    .head {
+        margin-bottom: 8px;
+        padding: 0 1rem;
+    }
+
+    .user {
+        padding: .7rem;
+    }
+    
+    .main {
+        padding: 2% 1%;
+        margin: 0 1%;
+    }
+
+    .input__container {
+        display: flex;
+        justify-content: center;
+        flex-direction: column;
+        align-items: center;
+    }
+
+    .select-btn,
+    .add-btn {
+        width: 10.44rem
+    }
+
+    .display__container {
+        display: flex;
+        justify-content: center;
+        flex-direction: column;
+    }
+
+    .income,
+    .expense {
+        width: 100%;
+        padding: 5px 5px;
+    }
+
+    #type,
+    #add {
+        width: 100%;
+    }
+
+    .income__container div,
+    .expense__container div {
+       grid-column-gap: 0.5rem;
+       padding: ;
+    }
+  
+  }
