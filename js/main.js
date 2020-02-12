@@ -38,7 +38,7 @@ window.addEventListener('load', () => {
     addBtn.addEventListener('click', calculate);
 
     function calculate() {
-        
+
         checkSubmit ();
 
         if (inputDetail.value === "" || inputAmount.value === "" || inputType.value === '0') {
