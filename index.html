@@ -14,30 +14,32 @@
         <div class="head">
             <h1>account balance</h1>
             <div>
-                <div class="user">AY</div>
+                <div class="user">HN</div>
                 <p class="logout">logout</p>
             </div>
         </div>
 
         <div class="main">
-            <div class="input__container">
-                <div>
-                    <input type="text" id="detail" value="online course">
+            <form id="form">
+                <div class="input__container">
+                    <div>
+                        <input type="text" id="detail" value="eating">
+                    </div>
+                    <div>
+                        <input type="text" id="amount" value="200">
+                    </div>         
+                    <div>
+                        <select name="type" id="type">
+                            <option value="0">-Select-</option>
+                            <option value="income">Income</option>
+                            <option value="expense">Expense</option>
+                        </select>
+                    </div>
+                    <div class="add-btn">
+                        <button type="submit" id="add">Add</button> 
+                    </div>  
                 </div>
-                <div>
-                    <input type="text" id="amount" value="5000">
-                </div>         
-                <div>
-                    <select name="type" id="type">
-                        <option value="select">-Select-</option>
-                        <option value="income">Income</option>
-                        <option value="expense">Expense</option>
-                    </select>
-                </div>
-                <div class="add-btn">
-                    <button id="add">add</button>
-                </div>
-            </div>
+            </form>
             <div class="display__container">
                 <div class="income">
                     <div class="title">
@@ -60,7 +62,7 @@
                     <h3>Balance</h3>
                 </div>
                 <div>
-                    <p>You have <span id="result">18.000</span> in your account</p>
+                    <p>You have <span id="result">0</span> € in your account</p>
                 </div>
             </div>
         </div>
