@@ -4,33 +4,33 @@ window.addEventListener('load', () => {
     let inputDetail = document.querySelector('#detail');
     let inputType = document.querySelector('#type');
     let addBtn = document.querySelector('#add');
-    
-    const userAccount = {
-        firstName: 'Helmi',
-        lastName: 'Nguyen',
-        income: [{
-                detail: 'Salary',
-                amount: 4000,
-                time: 'Feb 12,2020 9:26'
-            },
-            {
-                detail: 'Prize',
-                amount: 5000,
-                time: 'Feb 12,2020 9:26'
-            }
-        ],
-        expense: [{
-                detail: 'Rent',
-                amount: 900,
-                time: 'Feb 12,2020 9:26'
-            },
-            {
-                detail: 'Transport',
-                amount: 100,
-                time: 'Feb 12,2020 9:26'
-            }
-        ],
-    }
+
+    // const userAccount = {
+    //     firstName: 'Helmi',
+    //     lastName: 'Nguyen',
+    //     income: [{
+    //             detail: 'Salary',
+    //             amount: 4000,
+    //             time: 'Feb 12,2020 9:26'
+    //         },
+    //         {
+    //             detail: 'Prize',
+    //             amount: 5000,
+    //             time: 'Feb 12,2020 9:26'
+    //         }
+    //     ],
+    //     expense: [{
+    //             detail: 'Rent',
+    //             amount: 900,
+    //             time: 'Feb 12,2020 9:26'
+    //         },
+    //         {
+    //             detail: 'Transport',
+    //             amount: 100,
+    //             time: 'Feb 12,2020 9:26'
+    //         }
+    //     ],
+    // }
     
 
     addBtn.addEventListener('click', calculate);
@@ -53,18 +53,21 @@ window.addEventListener('load', () => {
     let incomeArr = [];
     let expenseArr = [];
 
-    function getInput() {
+    // function getInput() {
 
-        let detail = inputDetail.value;
-        let amount = +inputAmount.value;
-        let time = getTime();
+    //     let detail = inputDetail.value;
+    //     let amount = +inputAmount.value;
+    //     let time = getTime();
 
-        if (inputType.value === 'income') {
-            userAccount.income.push({detail, amount, time});
-        } else if (inputType.value === 'expense') {
-            userAccount.expense.push({detail, amount, time});
-        }
-    }
+    //     if (inputType.value === 'income') {
+    //         userAccount.income.push({detail, amount, time});
+    //     } else if (inputType.value === 'expense') {
+    //         userAccount.expense.push({detail, amount, time});
+    //     }
+    // }
+
+        
+    
 
     function getTime() {
         const now = new Date();
@@ -111,7 +114,7 @@ window.addEventListener('load', () => {
                 <p>${time}</p>
             </div>`
           
-            incomeArr.push(amount);
+            incomeArr.push(amount); 
 
         }
 
@@ -136,17 +139,21 @@ window.addEventListener('load', () => {
     }
 
     function getBalance() {
-        let totalIncome;
-        let totalExpense;
+        let totalIncome = 0;
+        let totalExpense = 0;
         let balance;
 
-        incomeArr.reduce((total, num) => {
-            return totalIncome = total + num;
-        })
+        if ( incomeArr && incomeArr.length ) {
+            incomeArr.reduce((total, num) => {
+                return totalIncome = total + num;
+            }, 0)
+        }
 
-        expenseArr.reduce((total, num) => {
-            return totalExpense = total + num;
-        })
+        if ( expenseArr && expenseArr.length ) {
+            expenseArr.reduce((total, num) => {
+                return totalExpense = total + num;
+            }, 0)
+        }
         
         balance = totalIncome - totalExpense;
 
@@ -182,6 +189,7 @@ window.addEventListener('load', () => {
         inputDetail.style.border = '1px solid grey';
         inputAmount.style.border = '1px solid grey';
 
+
         if (inputDetail.value.length > 15 ) {
             inputDetail.style.border = '1px solid red';
 
@@ -194,6 +202,75 @@ window.addEventListener('load', () => {
         
     }
 
+    inputDetail.addEventListener('click', () => {
+        if (inputDetail.value != '') {
+            inputDetail.value = ''
+        }
+    });
+
+    inputAmount.addEventListener('click', () => {
+        if (inputAmount.value != '') {
+            inputAmount.value = ''
+        }
+    });
+
+    
+    let userAccount;
+
+    function getInput() {
+
+
+        let input = {
+            income: [],
+            expense: [],
+        }
+    
+        let detail = inputDetail.value;
+        let amount = +inputAmount.value;
+        let time = getTime();
+
+        if (inputType.value === 'income') {
+            input.income.push({detail, amount, time});
+        } else if (inputType.value === 'expense') {
+            input.expense.push({detail, amount, time});
+        }
+       
+        let inputStr = [];
+
+        inputStr = JSON.stringify(input, undefined, 4);
+
+        if (localStorage.getItem('key') === null) {     
+            localStorage.setItem('key', inputStr);
+            userAccount = JSON.parse(localStorage.getItem('key'), undefined, 4);
+
+        } else {
+            userAccount = JSON.parse(localStorage.getItem('key'), undefined, 4);
+
+            if (userAccount.income.length > 0) {
+                for (let item of userAccount.income) {
+                    input.income.push(item);
+                }
+            } else {
+
+            }
+
+            if (userAccount.expense.length > 0) { 
+                for (let item of userAccount.expense) {
+                    input.expense.push(item);
+                }
+            } else {
+
+            }
+            
+            inputStr = JSON.stringify(input, undefined, 4);
+            localStorage.setItem('key', inputStr);
+            userAccount = JSON.parse(localStorage.getItem('key'), undefined, 4);
+            
+        }
+
+        return userAccount;
+        
+    }
 
     let form = document.getElementById('form');
     
@@ -201,88 +278,6 @@ window.addEventListener('load', () => {
         e.preventDefault();
     });
 
-    // const incomes = [
-    //     {description: 'Salary',
-    //     amount: 3500},
-    //     {description: 'Bonus',
-    //     amount: 500},
-    //     {description: 'Booksale',
-    //     amount: 500}
-    //     ];
-
-    // const expense = [
-    //     {description: 'Salary',
-    //     amount: 3500},
-    //     {description: 'Bonus',
-    //     amount: 500},
-    //     {description: 'Booksale',
-    //     amount: 500}
-    // ]
-    //     console.log(incomes);
-    //     const incomesString = JSON.stringify(incomes, undefined, 4);
-    //     console.log(incomesString);
-    //     localStorage.setItem('incomes', incomesString);
-    //     console.log(localStorage);
-        
-    //     const incomesObj = JSON.parse(localStorage.getItem('incomes'),undefined, 4);
-    //     console.log(incomesObj);
-    //     incomesObj.forEach(income => {
-    //     console.log(income.description, income.amount);
-        
-    //     });
-
-        // const userAccount = {
-    //     firstName: 'Helmi',
-    //     lastName: 'Nguyen',
-    //     income: [{
-    //             detail: 'Salary',
-    //             amount: 4000,
-    //             time: 'Feb 12,2020 9:26'
-    //         },
-    //         {
-    //             detail: 'Prize',
-    //             amount: 5000,
-    //             time: 'Feb 12,2020 9:26'
-    //         }
-    //     ],
-    //     expense: [{
-    //             detail: 'Rent',
-    //             amount: 900,
-    //             time: 'Feb 12,2020 9:26'
-    //         },
-    //         {
-    //             detail: 'Transport',
-    //             amount: 100,
-    //             time: 'Feb 12,2020 9:26'
-    //         }
-    //     ],
-    // }
-
-    
-
-    // function getInput() {
-
-    //     let input = [];
-    //     let detail = inputDetail.value;
-    //     let amount = +inputAmount.value;
-    //     let time = getTime();
-    //     let type = inputType.value
-
-    //     let i;
-    //     input.push({detail, amount, time, type, i});
-    //     i++;
-
-    //     console.log(input);
-
-    //     localStorage.setItem(i, input);
-        
-    //     let userAccount = [];
-    //     for (let item in localStorage) {
-    //         userAccount.push(item);
-    //     }
-    //     console.log(userAccount);
-    // }
-    
 
 })
     
